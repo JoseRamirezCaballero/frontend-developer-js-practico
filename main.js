@@ -9,3 +9,12 @@ function toggleDesktopMenu(){
     // Version buena
     desktopMenu.classList.toggle('inactive')
 }
+
+const burguerIconMenu = document.querySelector('#burguerIconMenu')
+const mobileMenu = document.querySelector('.mobile-menu')
+
+burguerIconMenu.addEventListener("click", toggleDesktopMobile)
+
+function toggleDesktopMobile(){
+    mobileMenu.classList.toggle('inactive')
+}
