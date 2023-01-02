@@ -3,7 +3,7 @@ const desktopMenu = document.querySelector(".desktop-menu");
 const burguerIconMenu = document.querySelector("#burguerIconMenu");
 const mobileMenu = document.querySelector(".mobile-menu");
 const menuCarritoIcon = document.querySelector(".navbar-shopping-cart");
-const aside = document.querySelector(".product-detail");
+const asideProductDetailCart = document.querySelector(".product-detail-cart");
 
 navbarEmail.addEventListener("click", toggleDesktopMenu);
 function toggleDesktopMenu() {
@@ -11,19 +11,19 @@ function toggleDesktopMenu() {
   // return desktopMenu.classList.contains('inactive') ?  desktopMenu.classList.remove('inactive') : desktopMenu.classList.add('inactive')
   // Version buena
   desktopMenu.classList.toggle("inactive");
-  // aside.classList.add('inactive')
+  // asideProductDetailCart.classList.add('inactive')
 }
 
 burguerIconMenu.addEventListener("click", toggleMobileMenu);
 function toggleMobileMenu() {
-  aside.classList.add("inactive");
+  asideProductDetailCart.classList.add("inactive");
   mobileMenu.classList.toggle("inactive");
 }
 
 menuCarritoIcon.addEventListener("click", toggleCarritoAside);
 function toggleCarritoAside() {
   mobileMenu.classList.add("inactive");
-  aside.classList.toggle("inactive");
+  asideProductDetailCart.classList.toggle("inactive");
 }
 
 const productList = [];
@@ -109,6 +109,8 @@ function renderProductV1(array) {
 }
 renderProductV1(productList)
 
+
+// Por cuestienos de seguridad, se recomienda hacerlo con el renderProductV1
 function renderProductV2(array) {
   array.forEach((product) => {
     cardsContainer.innerHTML += `
