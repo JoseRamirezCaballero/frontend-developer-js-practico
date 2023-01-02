@@ -4,6 +4,8 @@ const burguerIconMenu = document.querySelector("#burguerIconMenu");
 const mobileMenu = document.querySelector(".mobile-menu");
 const menuCarritoIcon = document.querySelector(".navbar-shopping-cart");
 const asideProductDetailCart = document.querySelector(".product-detail-cart");
+const asideProductDetail = document.querySelector(".product-detail");
+const asideProductDetailClose = document.querySelector(".product-detail-close");
 
 navbarEmail.addEventListener("click", toggleDesktopMenu);
 function toggleDesktopMenu() {
@@ -11,7 +13,7 @@ function toggleDesktopMenu() {
   // return desktopMenu.classList.contains('inactive') ?  desktopMenu.classList.remove('inactive') : desktopMenu.classList.add('inactive')
   // Version buena
   desktopMenu.classList.toggle("inactive");
-  // asideProductDetailCart.classList.add('inactive')
+  asideProductDetailCart.classList.add('inactive')
 }
 
 burguerIconMenu.addEventListener("click", toggleMobileMenu);
@@ -23,7 +25,20 @@ function toggleMobileMenu() {
 menuCarritoIcon.addEventListener("click", toggleCarritoAside);
 function toggleCarritoAside() {
   mobileMenu.classList.add("inactive");
+  desktopMenu.classList.add('inactive')
+  asideProductDetail.classList.add('inactive')
   asideProductDetailCart.classList.toggle("inactive");
+}
+
+asideProductDetailClose.addEventListener("click", closeProductDetail);
+function closeProductDetail() {
+  asideProductDetail.classList.add('inactive')
+}
+
+function openProductDetail() {
+  desktopMenu.classList.add("inactive");
+  asideProductDetailCart.classList.add('inactive')
+  asideProductDetail.classList.remove('inactive')
 }
 
 const productList = [];
@@ -88,6 +103,7 @@ function renderProductV1(array) {
 
     let img = document.createElement("img");
     img.setAttribute("src", product.image);
+    img.addEventListener('click', openProductDetail)
 
     let productInfo = document.createElement("div");
     productInfo.classList.add("product-info");
@@ -129,4 +145,4 @@ function renderProductV2(array) {
         `;
   });
 }
-renderProductV2(productList);
+// renderProductV2(productList);
